@@ -9,6 +9,10 @@ module RolloutUi
       @name = name.to_sym
     end
 
+    def to_param
+      name
+    end
+
     def percentage
       rollout.get(feature_for(name)).percentage.to_s
     end
