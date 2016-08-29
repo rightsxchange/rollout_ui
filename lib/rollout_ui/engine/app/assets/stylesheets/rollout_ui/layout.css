@@ -8,6 +8,10 @@ h1 img {
   height: 75px;
 }
 
+h2.custom_header {
+  color: #b30000;
+}
+
 /* For modern browsers */
 .clearfix:before,
 .clearfix:after {
@@ -78,6 +82,13 @@ h1 img {
 
 #features .feature nav {
   padding: 20px 29px;
+}
+
+#features .feature a.add_me_link {
+  color: #fcc334;
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: normal;
 }
 
 #features .feature label {
