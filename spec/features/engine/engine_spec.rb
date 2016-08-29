@@ -14,6 +14,22 @@ describe "Engine", type: :feature do
       expect(page).to have_content("featureA")
     end
 
+    context "setting additional header" do
+      let(:header) { "Production Environment" }
+      around do |example|
+        text = RolloutUi.header_text
+        RolloutUi.header_text = header
+        example.run
+        RolloutUi.header_text = text
+      end
+
+      it "has header text" do
+        visit "/rollout"
+
+        expect(page).to have_content(header)
+      end
+    end
+
     describe "percentage" do
       it "allows changing of the percentage" do
         visit "/rollout"

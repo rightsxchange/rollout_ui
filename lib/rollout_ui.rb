@@ -54,4 +54,12 @@ module RolloutUi
       user_identifiers
     end
   end
+
+  def self.header_text=(text)
+    @@header_text = text
+  end
+
+  def self.header_text
+    return @@header_text if defined?(@@header_text)
+  end
 end

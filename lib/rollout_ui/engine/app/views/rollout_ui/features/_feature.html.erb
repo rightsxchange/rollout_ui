@@ -4,9 +4,8 @@
 
     <% if defined?(current_user) && current_user %>
       <div style="float:right;">
-        <% if feature.user_ids.include?(current_user.id.to_s) %>
-        <% else %>
-          <%= link_to 'Add Me', feature_current_user_path(feature.name), method: :post %>
+        <% unless feature.user_ids.include?(current_user.id.to_s) %>
+          <%= link_to 'Add Me', feature_current_user_path(feature.name), method: :post, class: 'add_me_link' %>
         <% end %>
       </div>
     <% end %>

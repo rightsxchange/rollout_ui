@@ -10,6 +10,16 @@
   <body>
     <div id="container">
       <h1><%= image_tag "rollout_ui/rollout.png", :alt => "Rollout" %></h1>
+      <%- if RolloutUi.header_text -%>
+        <h2 class="custom_header"><%= RolloutUi.header_text -%></h2>
+      <%- end -%>
+
+      <% if defined?(current_user) && current_user %>
+        <h3>
+          <%- user_id = current_user.respond_to?(:email) ? current_user.email : current_user.id -%>
+          <%= "Current #{current_user.class.to_s}: #{user_id}" -%>
+        </h3>
+      <%- end -%>
       <%= yield %>
     </div>
 
