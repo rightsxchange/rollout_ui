@@ -21,7 +21,7 @@ Then you're ready to use RolloutUI.
 
 Add it to your gemfile:
 
-    gem "rollout_ui"
+    gem "rollout_ui", git: "https://github.com/WalkerAndCoBrandsInc/rollout_ui.git"
 
 Wrap your rollout instance:
 
