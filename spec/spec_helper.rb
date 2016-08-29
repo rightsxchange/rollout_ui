@@ -6,6 +6,7 @@ require 'redis-namespace'
 
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require 'rspec/rails'
+require 'capybara/rails'
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 

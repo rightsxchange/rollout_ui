@@ -28,7 +28,7 @@ Wrap your rollout instance:
     $rollout = Rollout.new($redis)
     RolloutUi.wrap($rollout)
 
-### Rails 3.1
+### Rails 4
 
 In your `application.rb` file, require the rollout engine:
 

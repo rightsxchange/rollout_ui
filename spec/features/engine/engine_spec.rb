@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "Engine" do
+describe "Engine", type: :feature do
   describe "GET /rollout" do
-    let(:user) { mock(:user, :id => 5) }
+    let(:user) { double(:user, :id => 5) }
 
     before do
       $rollout.active?(:featureA, user)
@@ -11,19 +11,7 @@ describe "Engine" do
     it "shows requested rollout features" do
       visit "/rollout"
 
-      page.should have_content("featureA")
-    end
-
-    describe "remove button" do
-      it "removes the feature" do
-        visit "/rollout"
-
-        within("#featureA .feature-header") do
-          click_button "remove"
-        end
-
-        $rollout.active?(:featureA, user).should be_false
-      end
+      expect(page).to have_content("featureA")
     end
 
     describe "percentage" do
@@ -35,7 +23,7 @@ describe "Engine" do
           click_button "Save"
         end
 
-        $rollout.active?(:featureA, user).should be_true
+        expect($rollout.active?(:featureA, user)).to be_truthy
       end
 
       it "shows the selected percentage" do
@@ -46,13 +34,14 @@ describe "Engine" do
           click_button "Save"
         end
 
-        page.should have_css(".percentage option[selected='selected']", :text => "57")
+        expect(page).to have_content("#{:featureA} - 57.0%")
+        expect($rollout.get(:featureA).percentage).to eq(57.0)
       end
     end
 
     describe "groups" do
       before do
-        user.stub(:beta_tester? => true)
+        allow(user).to receive(:beta_tester?).and_return(true)
         $rollout.define_group(:beta_testers) { |user| user.beta_tester? }
       end
 
@@ -64,7 +53,7 @@ describe "Engine" do
           click_button "Save"
         end
 
-        $rollout.active?(:featureA, user).should be_true
+        expect($rollout.active?(:featureA, user)).to be_truthy
       end
 
       it "shows the selected groups" do
@@ -75,7 +64,7 @@ describe "Engine" do
           click_button "Save"
         end
 
-        page.should have_css(".groups option[selected='selected']", :text => "beta_testers")
+        expect(page).to have_css("select.groups option[selected]", text: "beta_testers")
       end
     end
 
@@ -84,22 +73,22 @@ describe "Engine" do
         visit "/rollout"
 
         within("#featureA .users_form") do
-          fill_in "users[]", :with => 5
+          fill_in "user_names[]", :with => 5
           click_button "Save"
         end
 
-        $rollout.active?(:featureA, user).should be_true
+        expect($rollout.active?(:featureA, user)).to be_truthy
       end
 
       it "shows the selected percentage" do
         visit "/rollout"
 
         within("#featureA .users_form") do
-          fill_in "users[]", :with => 5
+          fill_in "user_names[]", :with => 5
           click_button "Save"
         end
 
-        page.should have_css("input.users[value='5']")
+        expect(page).to have_css("input.users[value='5']")
       end
     end
 
@@ -113,7 +102,8 @@ describe "Engine" do
         visit "/rollout"
 
         elements = %w(anotherFeature featureA featureB)
-        page.body.should =~ Regexp.new("#{elements.join('.*')}.*", Regexp::MULTILINE)
+        expect(page.body)
+          .to match(Regexp.new("#{elements.join('.*')}.*", Regexp::MULTILINE))
       end
     end
 
@@ -126,7 +116,7 @@ describe "Engine" do
           click_button "Add Feature"
         end
 
-        page.should have_content("featureB")
+        expect(page).to have_content("featureB")
       end
     end
   end
