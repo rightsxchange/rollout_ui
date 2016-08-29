@@ -35,20 +35,21 @@ module RolloutUi
   end
 
   def self.user_class
-    @@user_class ||= User
+    return @@user_class if defined?(@@user_class)
+    @@user_class = User if defined?(::User)
   end
 
   def self.find_user_names(user_ids)
-    if @@user_name_field && user_ids.present?
-      user_class.where(id: user_ids).pluck(@@user_name_field)
+    if user_class && user_ids.present?
+      user_class.where(id: user_ids).pluck(user_name_field)
     else
       user_ids
     end
   end
 
   def self.find_user_ids(user_identifiers)
-    if @@user_name_field && user_identifiers.present?
-      user_class.where(@@user_name_field => user_identifiers).pluck(:id)
+    if user_class && user_identifiers.present?
+      user_class.where(user_name_field => user_identifiers).pluck(:id)
     else
       user_identifiers
     end

@@ -10,7 +10,7 @@ module RolloutUi
     end
 
     def to_param
-      name
+      name.to_s
     end
 
     def percentage
