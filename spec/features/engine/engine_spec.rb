@@ -36,6 +36,7 @@ describe "Engine", type: :feature do
 
         expect(page).to have_content("#{:featureA} - 57.0%")
         expect($rollout.get(:featureA).percentage).to eq(57.0)
+        expect(page).to have_css(".percentage option[selected]", :text => "57")
       end
     end
 
