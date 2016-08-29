@@ -28,6 +28,10 @@ Wrap your rollout instance:
     $rollout = Rollout.new($redis)
     RolloutUi.wrap($rollout)
 
+Optional custom header at top of UI (for calling out, for example, Production vs. QA environment):
+
+    RolloutUI.header_text = Rails.env.to_s
+
 ### Rails 4
 
 In your `application.rb` file, require the rollout engine:
@@ -53,6 +57,7 @@ Put this somewhere before the `URLMap` in your `config.ru`:
     RolloutUi::Server.use Rack::Auth::Basic do |username, password|
       username == '<some username>' && password == '<some password>'
     end
+
 
 Resources
 ---------
