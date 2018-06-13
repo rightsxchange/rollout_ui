@@ -16,9 +16,9 @@
   <%= form_tag feature_path(feature), :class => "percentage_form", :method => :put, :remote => true do %>
     <label>Percentage</label>
     <select class="percentage" name="percentage">
-      <% 101.times do |i| %>
-        <option value="<%= i %>"<%= " selected='selected'" if feature.percentage.to_i == i.to_i %>><%= i %>%</option>
-      <% end %>
+      <option value="<%= feature.percentage.to_i %>" "selected='selected'"><%= feature.percentage.to_i %>%</option>
+      <option value="0">0%</option>
+      <option value="100">100%</option>
     </select>
     <input type="submit" value="Save" />
   <% end %>
