@@ -14,14 +14,14 @@ module RolloutUi
     end
 
     def add_feature(feature)
-      old_features = features << feature
-      update_features(old_features)
+      updating_features = features << feature
+      update_features(updating_features)
     end
 
     def remove_feature(feature)
-      old_features = features
-      old_features.delete(feature)
-      update_features(old_features)
+      updating_features = features
+      updating_features.delete(feature)
+      update_features(updating_features)
     end
 
     def update_features(features_arr)
