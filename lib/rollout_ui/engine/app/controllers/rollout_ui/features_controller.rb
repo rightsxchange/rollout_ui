@@ -3,7 +3,7 @@ module RolloutUi
     before_filter :wrapper, :only => [:index, :create, :destroy]
 
     def index
-      @features = @wrapper.features.map{ |feature| RolloutUi::Feature.new(feature) }
+      @features = @wrapper.features.sort.map{ |feature| RolloutUi::Feature.new(feature) }
     end
 
     def create

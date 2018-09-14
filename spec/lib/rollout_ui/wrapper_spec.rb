@@ -44,14 +44,14 @@ describe RolloutUi::Wrapper do
       $rollout.active?(:featureA, double(:user, :id => 5))
       $rollout.active?(:featureB, double(:user, :id => 6))
 
-      expect(@rollout_ui.features).to eq(["featureA", "featureB"])
+      expect(@rollout_ui.features).to eq([:featureA, :featureB])
     end
 
     it "lists each feature only once" do
       $rollout.active?(:featureA, double(:user, :id => 5))
       $rollout.active?(:featureA, double(:user, :id => 6))
 
-      expect(@rollout_ui.features).to eq(["featureA"])
+      expect(@rollout_ui.features).to eq([:featureA])
     end
 
     it "lists features in alphabetical order" do
@@ -60,7 +60,7 @@ describe RolloutUi::Wrapper do
       $rollout.active?(:featureB, double(:user, :id => 6))
       $rollout.active?(:anotherFeature, double(:user, :id => 8))
 
-      expect(@rollout_ui.features).to eq(%w(anotherFeature featureA featureB zFeature))
+      expect(@rollout_ui.features).to eq([:anotherFeature, :featureA, :featureB, :zFeature])
     end
   end
 
@@ -68,7 +68,7 @@ describe RolloutUi::Wrapper do
     it "adds feature to the list of features" do
       @rollout_ui.add_feature(:featureA)
 
-      expect(@rollout_ui.features).to eq(["featureA"])
+      expect(@rollout_ui.features).to eq([:featureA])
     end
   end
 
