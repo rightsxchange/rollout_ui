@@ -14,7 +14,9 @@ module RolloutUi
     end
 
     def add_feature(feature)
-      updating_features = features << feature
+      updating_features = features
+      return if updating_features.include?(feature)
+      updating_features << feature
       update_features(updating_features)
     end
 
