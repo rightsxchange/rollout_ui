@@ -30,8 +30,7 @@ module RolloutUi
     end
 
     def features
-      features = redis.get(@rollout.send(:features_key)).sort
-      features.present? ? features.split(",").map(&:to_sym) : []
+      @rollout.features
     end
 
     def redis
