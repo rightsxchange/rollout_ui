@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["jrallison@gmail.com"]
   gem.description   = %q{A UI for James Golick's rollout gem}
   gem.summary       = %q{A UI for James Golick's rollout gem}
-  gem.homepage      = "http://github.com/WalkerAndCoBrandsInc/rollout_ui"
+  gem.homepage      = "http://github.com/rightsxchange/rollout_ui"
 
   gem.files         = Dir["lib/**/*"] + ["Rakefile", "README.markdown"]
   gem.test_files    = Dir["spec/**/*"]
