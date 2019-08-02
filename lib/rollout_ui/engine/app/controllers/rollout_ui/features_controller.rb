@@ -1,6 +1,6 @@
 module RolloutUi
   class FeaturesController < RolloutUi::ApplicationController
-    before_filter :wrapper, :only => [:index, :create, :destroy]
+    before_action :wrapper, :only => [:index, :create, :destroy]
 
     def index
       @features = @wrapper.features.sort.map{ |feature| RolloutUi::Feature.new(feature) }
