@@ -5,9 +5,9 @@ require "rollout_ui/version"
 Gem::Specification.new do |gem|
   gem.name          = "rollout_ui"
   gem.version       = RolloutUi::Version
-  gem.authors       = ["John Allison"]
-  gem.email         = ["jrallison@gmail.com"]
-  gem.description   = %q{A UI for James Golick's rollout gem}
+  gem.authors       = ['TRX Development Team', 'John Allison']
+  gem.email         = ['developers@trx.tv', 'jrallison@gmail.com']
+  gem.description   = %q{A UI for James Golick's rollout gem, forked from the original at https://github.com/jrallison/rollout_ui}
   gem.summary       = %q{A UI for James Golick's rollout gem}
   gem.homepage      = "http://github.com/rightsxchange/rollout_ui"
 
