@@ -1,6 +1,6 @@
 module RolloutUi
   class Features::CurrentUsersController < ApplicationController
-    before_filter :load_feature
+    before_action :load_feature
 
     def create
       @feature.user_ids = @feature.user_ids + [current_user.id.to_s]
