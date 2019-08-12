@@ -29,6 +29,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'redis-namespace'
   gem.add_development_dependency 'rspec-rails'
   gem.add_development_dependency 'sinatra'
-  gem.add_development_dependency 'sqlite3'
+  gem.add_development_dependency 'sqlite3', '~> 1.3.13'
   gem.add_development_dependency 'uglifier'
 end
